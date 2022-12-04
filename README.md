@@ -1,5 +1,6 @@
 # automation_testing_stepik
-This is a repository for taking a course on Testing Automation on the site stepik.org .
+
+This is a repository for taking a course on Testing Automation on the site stepik_org .
 To run the tests, you need to:
 1. Download the repository via ssh with the command: git clone
 2. Install a virtual environment: python3 -m venv venv
