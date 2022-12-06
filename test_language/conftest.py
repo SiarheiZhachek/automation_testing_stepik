@@ -1,6 +1,6 @@
 import pytest
-from selenium import webdriver
 import allure
+from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as Options_chrome
 from selenium.webdriver.firefox.options import Options as Options_ff
 
@@ -32,20 +32,24 @@ def driver(browser_options, language_options):
 
 def pytest_addoption(parser):
     parser.addoption(
-        '--browser', action='store', default='chrome', help='Укажите значение браузера, поумолчанию Chrome'
+        '--browser',
+        action='store',
+        default='chrome',
+        help='Укажите значение браузера, поумолчанию Chrome'
     )
     parser.addoption(
-        '--language', action='store', default='rus', help='Укажите язык по умолчанию, Русский'
+        '--language',
+        action='store',
+        default='rus',
+        help='Укажите язык по умолчанию, Русский'
     )
 
 
 @pytest.fixture(scope='session')
 def browser_options(request):
-    browser = request.config.getoption('--browser')
-    return browser
+    return request.config.getoption('--browser')
 
 
 @pytest.fixture(scope='session')
 def language_options(request):
-    user_language = request.config.getoption('--language')
-    return user_language
+    return request.config.getoption('--language')

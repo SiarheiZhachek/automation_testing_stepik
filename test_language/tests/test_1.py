@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-from time import sleep
 
 
 def test_add_to_cart_button(driver):
@@ -11,7 +10,6 @@ def test_add_to_cart_button(driver):
     )
     british = driver.find_element(By.CSS_SELECTOR, 'select [value="en-gb"]')
     russian = driver.find_element(By.CSS_SELECTOR, 'select [value="ru"]')
-    sleep(3)
     if british.is_selected():
         assert british.is_selected()
         assert add_to_cart_button.is_displayed()
@@ -20,4 +18,3 @@ def test_add_to_cart_button(driver):
         assert russian.is_selected()
         assert add_to_cart_button.is_displayed()
         assert add_to_cart_button.text == 'Добавить в корзину'
-
