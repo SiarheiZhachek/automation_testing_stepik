@@ -38,7 +38,10 @@ def pytest_addoption(parser):
         help='Укажите значение браузера, поумолчанию Chrome'
     )
     parser.addoption(
-        '--language', action='store', default='rus', help='Укажите язык по умолчанию, Русский'
+        '--language',
+        action='store',
+        default='rus',
+        help='Укажите язык по умолчанию, Русский'
     )
 
 
