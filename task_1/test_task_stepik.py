@@ -1,10 +1,13 @@
 import os
 import math
+import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+from time import sleep
+import time
 
 
 def calc(x_num):
@@ -217,3 +220,41 @@ def test_stepik_14(driver):
     print()
     print(Alert(driver).text)
     Alert(driver).accept()
+
+
+@pytest.mark.parametrize(
+    'link', [
+        'https://stepik.org/lesson/236895/step/1',
+        'https://stepik.org/lesson/236896/step/1',
+        'https://stepik.org/lesson/236897/step/1',
+        'https://stepik.org/lesson/236898/step/1',
+        'https://stepik.org/lesson/236899/step/1',
+        'https://stepik.org/lesson/236903/step/1',
+        'https://stepik.org/lesson/236904/step/1',
+        'https://stepik.org/lesson/236905/step/1'
+    ])
+def test_stepik_authorization(driver, link):
+    driver.get(link)
+    log_in = driver.find_element(By.ID, 'ember33')
+    log_in.click()
+    driver.find_element(By.CSS_SELECTOR, '#id_login_email').send_keys('sersh990@ya.ru')
+    driver.find_element(By.CSS_SELECTOR, '#id_login_password').send_keys('s202502OE')
+    log_in_button = driver.find_element(By.CSS_SELECTOR, '.sign-form__btn.button_with-loader ')
+    log_in_button.click()
+    answer = math.log(int(time.time()))
+    field = driver.find_element(
+        By.CSS_SELECTOR, '.ember-text-area.ember-view.textarea.string-quiz__textarea'
+    )
+    field.clear()
+    field.send_keys(answer)
+    button = driver.find_element(By.CSS_SELECTOR, '.submit-submission')
+    button.click()
+    message = driver.find_element(By.CSS_SELECTOR, '.smart-hints__hint')
+    assert message.text == 'Correct!', 'not correct'
+
+
+def test_1(driver):
+    driver.get('https://4gkb.by/')
+    buttons = driver.find_elements(By.CSS_SELECTOR, 'a[class="dropdown-toggle"]')
+    buttons[0].click()
+    sleep(5)

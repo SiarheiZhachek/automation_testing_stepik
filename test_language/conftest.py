@@ -6,7 +6,7 @@ from selenium.webdriver.firefox.options import Options as Options_ff
 
 
 @pytest.fixture(scope='function')
-def driver(browser_options, language_options, request):
+def driver(browser_options, language_options):
     if browser_options == 'ff' and language_options == 'en':
         with allure.step('Rune Firefox and language English'):
             options = Options_ff()
@@ -32,7 +32,7 @@ def driver(browser_options, language_options, request):
 
 def pytest_addoption(parser):
     parser.addoption(
-        '--browser', action='store', default=None, help='Укажите значение браузера, поумолчанию Chrome'
+        '--browser', action='store', default='chrome', help='Укажите значение браузера, поумолчанию Chrome'
     )
     parser.addoption(
         '--language', action='store', default='rus', help='Укажите язык по умолчанию, Русский'
