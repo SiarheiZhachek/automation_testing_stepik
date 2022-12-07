@@ -7,7 +7,7 @@ from selenium.webdriver.firefox.options import Options as Options_ff
 
 @pytest.fixture(scope='function')
 def driver(browser_options, language_options):
-    if browser_options == 'ff' and language_options == 'en':
+    if browser_options == 'ff' and language_options == 'es':
         with allure.step('Rune Firefox and language English'):
             options = Options_ff()
             options.set_preference("intl.accept_languages", language_options)
@@ -15,7 +15,7 @@ def driver(browser_options, language_options):
     elif browser_options == 'ff':
         with allure.step('Rune Firefox'):
             driver_browser = webdriver.Firefox()
-    elif language_options == 'en':
+    elif language_options == 'es':
         with allure.step('Rune Chrome with English'):
             options = Options_chrome()
             options.add_experimental_option('prefs', {'intl.accept_languages': language_options})
