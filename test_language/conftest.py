@@ -53,4 +53,3 @@ def browser_options(request):
 @pytest.fixture(scope='session')
 def language_options(request):
     return request.config.getoption('--language')
-

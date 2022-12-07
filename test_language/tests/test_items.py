@@ -18,4 +18,3 @@ def test_add_to_cart_button(driver):
         assert russian.is_selected()
         assert add_to_cart_button.is_displayed()
         assert add_to_cart_button.text == 'Добавить в корзину'
-
