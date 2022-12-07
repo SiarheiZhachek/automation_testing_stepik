@@ -14,6 +14,7 @@ def calc(x_num):
     return str(math.log(abs(12*math.sin(int(x_num)))))
 
 
+@pytest.mark.smoke
 def test_stepik_one(driver):
     driver.get('http://suninjuly.github.io/registration2.html')
     driver.find_element(
@@ -30,6 +31,7 @@ def test_stepik_one(driver):
     assert text_site.text == 'Congratulations! You have successfully registered!'
 
 
+@pytest.mark.regression
 def test_stepik_two(driver):
     driver.get('http://suninjuly.github.io/registration1.html')
     driver.find_element(
@@ -237,8 +239,8 @@ def test_stepik_authorization(driver, link):
     driver.get(link)
     log_in = driver.find_element(By.ID, 'ember33')
     log_in.click()
-    driver.find_element(By.CSS_SELECTOR, '#id_login_email').send_keys('sersh990@ya.ru')
-    driver.find_element(By.CSS_SELECTOR, '#id_login_password').send_keys('s202502OE')
+    driver.find_element(By.CSS_SELECTOR, '#id_login_email').send_keys('s')
+    driver.find_element(By.CSS_SELECTOR, '#id_login_password').send_keys('s2')
     log_in_button = driver.find_element(By.CSS_SELECTOR, '.sign-form__btn.button_with-loader ')
     log_in_button.click()
     answer = math.log(int(time.time()))
