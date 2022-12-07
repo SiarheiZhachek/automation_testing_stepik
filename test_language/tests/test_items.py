@@ -8,13 +8,13 @@ def test_add_to_cart_button(driver):
     add_to_cart_button = driver.find_element(
         By.CSS_SELECTOR, '.btn.btn-lg.btn-primary.btn-add-to-basket'
     )
-    british = driver.find_element(By.CSS_SELECTOR, 'select [value="en-gb"]')
-    russian = driver.find_element(By.CSS_SELECTOR, 'select [value="ru"]')
-    if british.is_selected():
-        assert british.is_selected()
+    british_language = driver.find_element(By.CSS_SELECTOR, 'select [value="en-gb"]')
+    russian_language = driver.find_element(By.CSS_SELECTOR, 'select [value="ru"]')
+    if british_language.is_selected():
+        assert british_language.is_selected()
         assert add_to_cart_button.is_displayed()
         assert add_to_cart_button.text == 'Add to basket'
     else:
-        assert russian.is_selected()
+        assert russian_language.is_selected()
         assert add_to_cart_button.is_displayed()
         assert add_to_cart_button.text == 'Добавить в корзину'
