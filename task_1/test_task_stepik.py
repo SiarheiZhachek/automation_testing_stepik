@@ -258,3 +258,4 @@ def test_1(driver):
     buttons = driver.find_elements(By.CSS_SELECTOR, 'a[class="dropdown-toggle"]')
     buttons[0].click()
     sleep(5)
+
